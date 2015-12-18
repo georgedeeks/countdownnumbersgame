@@ -6,6 +6,8 @@
 package hotsnapperbackendtest;
 
 
+/////////////////// I'M A MASSIVE WEEWEE
+
 import java.util.Scanner;
 
 /**
