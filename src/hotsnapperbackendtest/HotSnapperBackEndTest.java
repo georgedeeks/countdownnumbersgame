@@ -18,7 +18,7 @@ public class HotSnapperBackEndTest {
      */
     public static void main(String[] args) {
         
-        UnpackCsv.readAndStoreFiles();
+        CheckCsv.readAndStoreCsv();
         
         Scanner scanner = new Scanner(System.in); 
         
