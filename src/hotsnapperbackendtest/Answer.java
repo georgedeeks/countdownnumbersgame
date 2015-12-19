@@ -12,20 +12,15 @@ import java.util.Random;
  *
  * @author Helen
  */
-public class AnswerGenerator {
+public class Answer {
+    private static Random random = new Random();
+    
+   private Answer(){}
    
-   private AnswerGenerator(){}
-   
-   public void Additions(){}
-   public void Subtractions(){}
-   public void Multiplications(){}
-   public void Divisions(){}
-   
-   public static String generateAnswer(int[] nos)
+   public static String generate(int[] nos)
    {
        //Initialize variables needed
        ArrayList<Integer> numbers = new ArrayList(); 
-       Random random = new Random();
        int answer;
        int selected;
        int operator;
@@ -118,17 +113,20 @@ public class AnswerGenerator {
    
    public static void main(String[] args)
    {
-      Random random = new Random();
       int[] nos = new int[5];
-      nos[0] = 3;
-      nos[1] = 12;
-      nos[2] = 7;
-      nos[3] = 2;
-      nos[4] = 4;
-      System.out.println(AnswerGenerator.generateAnswer(nos));
+      
+      System.out.println(Answer.generate(nos));
       System.out.println();
       int count = (random.nextInt(2) + 1) + 3;
-      System.out.println(count);
+      
+      
+      nos = Question.generate();
+      for(int i = 0; i < nos.length; i++)
+      {
+          System.out.println(nos[i]);
+      }
+       System.out.println("");
+      System.out.println(Answer.generate(Question.generate()));
    }
     
     
