@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author ACER-LAPTOP
  */
-public class ReadFilesInAFolder {
+public class UnpackCsv {
     
     private static final String folderFilePath = "numbers/";
     private static final String testNumbersFileName = "numbers_";
@@ -27,10 +27,10 @@ public class ReadFilesInAFolder {
     private static ArrayList<String> filePathArray;
     private static ArrayList<String> resultsArrayToStore;
     
-    public ReadFilesInAFolder()
+    public UnpackCsv()
     {}
     
-    public static void printAndStoreFiles(){
+    public static void readAndStoreFiles(){
         try {
             
             Files.walk(Paths.get(folderFilePath)).forEach((Path filePath) -> 
@@ -55,10 +55,16 @@ public class ReadFilesInAFolder {
             
             //checkAndStoreIfTestNumbers();
         
+            //TODO
+            // set available Boolean for singleton
+            
         } catch (IOException ex) {
             
-            Logger.getLogger(ReadFilesInAFolder.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UnpackCsv.class.getName()).log(Level.SEVERE, null, ex);
         
+            //TODO
+            // set available Boolean for singleton
+                        
         }
     }
     

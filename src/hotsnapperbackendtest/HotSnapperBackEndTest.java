@@ -5,9 +5,6 @@
  */
 package hotsnapperbackendtest;
 
-
-/////////////////// I'M A MASSIVE WEEWEE
-/////////////////// AND A POOPOO 
 import java.util.Scanner;
 
 /**
@@ -20,31 +17,29 @@ public class HotSnapperBackEndTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         
-        ReadFilesInAFolder.printAndStoreFiles();
+        UnpackCsv.readAndStoreFiles();
         
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); 
+        
+        PlayGame.nextGame();
         
         while (true) 
         {
-            System.out.println("Stop playing game (Y/N)?");
+            System.out.println("Play again (Y/N)?");
             String str = scanner.next();
-            if (str.equalsIgnoreCase("Y"))
+            if (str.equalsIgnoreCase("N"))
             {
                 break;
             }
             else
             {
-                System.out.println("Hurray! You want to play again!");
-                
+                System.out.println("Hurray! You want to play again!\n");
+                PlayGame.nextGame();
             }
-            
-                       
         }
         
         System.out.println("I'm free! Application closing.");
-        
         
     }
     
