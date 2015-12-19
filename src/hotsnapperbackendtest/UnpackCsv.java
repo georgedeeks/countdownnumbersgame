@@ -31,7 +31,10 @@ public class UnpackCsv {
     {}
     
     public static void readAndStoreFiles(){
-        try {
+        try 
+        {
+            
+            
             
             Files.walk(Paths.get(folderFilePath)).forEach((Path filePath) -> 
                 {
@@ -44,11 +47,6 @@ public class UnpackCsv {
                         
                         filePathArray = new ArrayList<String>();
                         
-                     //   filePathArray.add(filePathString);
-                        
-                        //System.out.println(filePathString);
-                            // e.g. Hello1.txt                    
-                        
                     }
                 }                
             );    
@@ -58,7 +56,9 @@ public class UnpackCsv {
             //TODO
             // set available Boolean for singleton
             
-        } catch (IOException ex) {
+        } 
+        catch (Exception ex) 
+        {
             
             Logger.getLogger(UnpackCsv.class.getName()).log(Level.SEVERE, null, ex);
         

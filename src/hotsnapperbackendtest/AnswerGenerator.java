@@ -10,7 +10,7 @@ import java.util.Random;
 
 /**
  *
- * @author Helen
+ * @author George
  */
 public class AnswerGenerator {
    
