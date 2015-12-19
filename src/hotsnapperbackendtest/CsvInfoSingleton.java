@@ -13,19 +13,22 @@ public class CsvInfoSingleton {
         
     private static int[] numbers = new int[5];
     private static int targetNumber;    
-    private static boolean numbersBoolean;
-    private static boolean targetNumberBoolean;
     
-    private static boolean available;
+    private static boolean available = false;
 
-    public static boolean isAvailable() {
-        return available;
-    }
 
-    public static void setAvailable(boolean available) {
-        CsvInfoSingleton.available = available;
-    }
-    
+     //create an object of SingleObject
+   private static CsvInfoSingleton instance = new CsvInfoSingleton();
+
+   //make the constructor private so that this class cannot be
+   //instantiated
+   private CsvInfoSingleton(){}
+
+   //Get the only object available
+   public static CsvInfoSingleton getInstance(){
+      return instance;
+   }
+
     public static int[] getNumbers() {
         return numbers;
     }
@@ -42,22 +45,12 @@ public class CsvInfoSingleton {
         CsvInfoSingleton.targetNumber = targetNumber;
     }
 
-    public static boolean isNumbersBoolean() {
-        return numbersBoolean;
+    public static boolean isAvailable() {
+        return available;
     }
 
-    public static void setNumbersBoolean(boolean numbersBoolean) {
-        CsvInfoSingleton.numbersBoolean = numbersBoolean;
+    public static void setAvailable(boolean available) {
+        CsvInfoSingleton.available = available;
     }
-
-    public static boolean isTargetNumberBoolean() {
-        return targetNumberBoolean;
-    }
-
-    public static void setTargetNumberBoolean(boolean targetNumberBoolean) {
-        CsvInfoSingleton.targetNumberBoolean = targetNumberBoolean;
-    }
-    
-    
     
 }

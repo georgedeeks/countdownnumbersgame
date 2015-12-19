@@ -14,7 +14,7 @@ import java.io.IOException;
  *
  * @author ACER-LAPTOP
  */
-public class ReadCsv {
+public class Csv {
     
     // returns 0 if error
     public static int readTargetCsv()
@@ -129,6 +129,45 @@ public class ReadCsv {
         readNumbersCsv();
         
         readTargetCsv();
+        
+    }
+    
+    public static void readAndStoreCsv()
+    {
+        // read
+        
+        int[] numbers = readNumbersCsv();
+        
+        int target = readTargetCsv();
+        
+        // store
+        
+        if (numbers != null && target != 0)
+        {
+            //then successful extract of values from csv file
+            
+            // store numbers and target in singleton
+            
+            CsvInfoSingleton.getInstance().setTargetNumber(target);
+            
+            CsvInfoSingleton.getInstance().setNumbers(numbers);
+            
+            CsvInfoSingleton.getInstance().setAvailable(true);
+            
+            
+            // set available boolean to true
+            
+            //TODO
+            
+        }
+        else
+        {
+            // set available boolean to false as there was an error
+            
+           CsvInfoSingleton.getInstance().setAvailable(false);
+        }
+        
+        //hi
         
     }
 

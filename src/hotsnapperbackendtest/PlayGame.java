@@ -39,7 +39,7 @@ public class PlayGame {
         //TOSORT//TODO
         // try.catch here?
                 
-        if (CsvInfoSingleton.isNumbersBoolean() && CsvInfoSingleton.isTargetNumberBoolean())
+        if (CsvInfoSingleton.isAvailable() == true)
         {
             // OPTION 2A
             // then we have both calculate numbers AND a target number
@@ -50,15 +50,18 @@ public class PlayGame {
             
             solutionString = CalculateRelationship.getAnswerString(targetNumber, numbers);
             
+            // set available to false as we've just used it            
+            CsvInfoSingleton.getInstance().setAvailable(false);
+            
         }
         else
         {
             // OPTION 2B
-            // if neither are provided, then we generate both**
+            // if neither are provided, then we generate numbers, target & solution**
             
-            //TODO - sort this out with what HOG is doing
+            numbers = Question.generate();
             
-            // numbers = AnswerGenerator.generateNumbers();
+            String solutionAndTargetString = Answer.generate(numbers);
                 
             // targetNumber = AnswerGenerator.generateTarget(numbers);
                       
@@ -66,9 +69,13 @@ public class PlayGame {
         // **NB possible future development - 
         // if only targetNumber OR only numbers is found in the CSV file, 
         // have application logic to help deal with these 2 cases
-        // (so atm we only deal with 2 out of possible 4 cases)
+        // (so atm we only deal with 2 out of possible 4 cases, i.e. where both
+        // or where neither of these 2 csv files)
         
-        // end of step 2 - we have numbers, target number and solution all in 
+        // end of step 2 - we have 3 elements: 
+            // (i) numbers, 
+            // (ii) target number  
+            // (iii) solution
         // local declared variables
         
         // step 3 - print out #s, target# & solution in sout
