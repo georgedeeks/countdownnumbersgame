@@ -38,13 +38,32 @@ public class Solver {
     
     public static String inputValues(int[] numbers, int target)
     {
-        List<Integer> list = Arrays.asList();
+        
+        List<Integer> list = new ArrayList<Integer>();
+        
+     //   list = Arrays.asList();
         
         //e.g. numbers: 3, 4, 8, 7, 12
         for (int i = 0; i < numbers.length; i++)
         {
-            list.add(i);
+            list.add(numbers[i]);
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         Result result = null;
         
