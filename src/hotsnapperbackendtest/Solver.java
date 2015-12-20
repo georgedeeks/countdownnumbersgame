@@ -16,19 +16,38 @@ import java.util.List;
  */
 public class Solver {
     public static String inputValues(int[] numbers, int target)
-    {
-        List<Integer> list = Arrays.asList();
+    {        
+        List<Integer> list = new ArrayList<Integer>();
         ArrayList<Integer> noList = new ArrayList<>();
         ArrayList<String> operators = new ArrayList<>();
         int temp;
         String oTemp;
         int step = 0;
         
+     //   list = Arrays.asList();
+
+        
         //e.g. numbers: 3, 4, 8, 7, 12
         for (int i = 0; i < numbers.length; i++)
         {
-            list.add(i);
+            list.add(numbers[i]);
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         Result result = null;
         

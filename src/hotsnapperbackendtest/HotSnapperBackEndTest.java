@@ -5,7 +5,10 @@
  */
 package hotsnapperbackendtest;
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,36 +21,37 @@ public class HotSnapperBackEndTest {
      */
     public static void main(String[] args) {
         
-        
-        
         Scanner scanner = new Scanner(System.in); 
         
-        System.out.println("Type in any key (and hit return) to play!");
+        System.out.println("Press RETURN key to start...");
         
-        String stri = scanner.next();
+        try {
+            System.in.read();
+        } catch (IOException ex) {
+            Logger.getLogger(HotSnapperBackEndTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        if (stri.isEmpty() == false)
-        {
         Csv.readAndStoreCsv();
-            
-        PlayGame.nextGame();
         
-        while (true) 
+        boolean playAgain = true;
+        
+        while (playAgain) 
         {
             System.out.println("Play again (Y/N)?");
             String str = scanner.next();
             if (str.equalsIgnoreCase("N"))
             {
+                playAgain = false;
                 break;
             }
             else
             {
                 System.out.println("Hurray! You want to play again!\n");
                 PlayGame.nextGame();
+                playAgain = true;                
             }
         }
         
-        }
         
         System.out.println("I'm free! Application closing.");
         

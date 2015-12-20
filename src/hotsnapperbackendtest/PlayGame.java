@@ -98,16 +98,23 @@ public class PlayGame {
     
         try
         {
+            
+            String numbersAsString = Csv.numbersToString(numbers);
         
             System.out.println("Your numbers are: "
-                        + "\n " + numbers 
+                        + "\n " + numbersAsString 
                         + "\n And your target is: " + targetNumber);
 
             int delay = 0;
             int period = 1000;
             timer = new Timer();
-            interval = 31;
-
+            
+        ////////////////////////////////////////////////////////////
+        /// SHOULD BE 31
+        /// CHANGED TO 6 FOR TESTING
+            interval = 6;
+        ////////////////////////////////////////////////////////////
+            
             timer.scheduleAtFixedRate
                 (new TimerTask() 
 

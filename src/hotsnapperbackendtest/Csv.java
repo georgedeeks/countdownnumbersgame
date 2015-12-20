@@ -43,7 +43,6 @@ public class Csv {
 	} catch (FileNotFoundException e) {
 		e.printStackTrace();
                 
-                
 	} catch (IOException e) {
 		e.printStackTrace();
 	} finally {
@@ -70,8 +69,7 @@ public class Csv {
         
         String csvFile = "numbers/" + "numbers" + ".csv";
       //  System.out.println("csvfile = " + csvFile);
-        
-        
+
 	BufferedReader br = null;
 	String line = "";
 
@@ -88,18 +86,16 @@ public class Csv {
                     // comma separator
                     String[] numbersAsStrings = line.split(",");
 
-                    
-                    
                     for (int i = 0; i<5; i++)
                     {
                         numbers[i] = Integer.parseInt(numbersAsStrings[i]);
                         
-                        //System.out.print(numbers[i] + " ");
+                        System.out.print(numbers[i] + " ");
                         
                     }
                     
-                  
-                
+                   // System.out.println("numbers length 1 = " + numbers.length);
+                    
             }
 
 	} catch (FileNotFoundException e) {
@@ -119,16 +115,22 @@ public class Csv {
 		}
 	}
         
-        String numbersResult = "error"; //i.e. if unchanged
+        return numbers;
+    }
+    
+    public static String numbersToString(int[] numbers)
+    {
+        String numbersResult = ""; //i.e. if unchanged
         
         for (int i = 0; i < numbers.length; i++)
         {
-            numbersResult = numbers[i] + " ";
-        }
-
-	System.out.println("Numbers = " + numbersResult);
+            numbersResult += Integer.toString(numbers[i]) + " ";
+        }    
+        //System.out.println("numbers length = " + numbers.length);
         
-        return numbers;
+	//System.out.println("Numbers = " + numbersResult);
+        
+        return numbersResult;
     }
     
     public static void main(String[] args) {
