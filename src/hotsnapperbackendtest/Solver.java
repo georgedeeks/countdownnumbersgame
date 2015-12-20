@@ -15,30 +15,14 @@ import java.util.List;
  * http://stackoverflow.com/questions/15293232/how-to-design-an-algorithm-to-calculate-countdown-style-maths-number-puzzle
  */
 public class Solver {
-
-    public static void main(String[] args)
-    {
-        int[] nos = Question.generate();
-        List<Integer> list = Arrays.asList(3, 4, 8, 7, 12);
-        //following numbers: 3, 4, 8, 7, 12
-
-        //The target number is 532
-        for (Integer integer : list) {
-            List<Integer> runList = new ArrayList<>(list);
-            runList.remove(integer);
-            String ans = Answer.generate(nos).split(" : ")[0];
-            System.out.println(532);
-            Result result = getOperations(runList, integer, 532);
-            if (result.success) {
-                System.out.println(integer + result.output);
-                return;
-            }
-        }
-    }
-    
     public static String inputValues(int[] numbers, int target)
     {
         List<Integer> list = Arrays.asList();
+        ArrayList<Integer> noList = new ArrayList<>();
+        ArrayList<String> operators = new ArrayList<>();
+        int temp;
+        String oTemp;
+        int step = 0;
         
         //e.g. numbers: 3, 4, 8, 7, 12
         for (int i = 0; i < numbers.length; i++)
@@ -55,9 +39,50 @@ public class Solver {
             String ans = Answer.generate(numbers).split(" : ")[0];
             System.out.println(ans);
             result = getOperations(runList, integer, target);
+            //Modified code to make formatting of result more consistent
             if (result.success) {
-                System.out.println(integer + result.output);
-                return result.output;
+                //'split' out each individual step in the answer
+                String[] parts = result.output.split("@");
+                //Create two lists - one for each number used in the answer, and
+                //one for each operation used!
+                for(int i = 0; i < parts.length; i++)
+                {
+                    temp = Integer.parseInt(parts[i].split(" ")[2]);
+                    oTemp = parts[i].split(" ")[1];
+                    noList.add(temp);
+                    operators.add(oTemp);
+                }
+                temp = integer;
+                result.output = "";
+                //Go through each step (represented by step) and create a String
+                //representation of the sum (e.g. 12 * 7 = 14, 8 - 3 = 5, etc.)
+                while(step < noList.size())
+                {                
+                    switch(operators.get(step))
+                    {
+                       case("+"): result.output += temp + " + " + noList.get(step);
+                                  temp = temp + noList.get(step);  
+                                  result.output += " = " + temp + "\n";
+                                  step++;
+                                  break;
+                       case("-"): result.output += temp + " - " + noList.get(step); 
+                                  temp = temp - noList.get(step);
+                                  result.output += " = " + temp + "\n";
+                                  step++;
+                                  break;
+                       case("*"): result.output += temp + " * " + noList.get(step);  
+                                  temp = temp * noList.get(step);
+                                  result.output += " = " + temp + "\n";
+                                  step++;
+                                  break;
+                       case("/"): result.output += temp + " * " + noList.get(step);  
+                                  temp = temp / noList.get(step);
+                                  result.output += " = " + temp + "\n";
+                                  step++;
+                                  break;
+                    }
+                    
+                }
             }
         }
         
