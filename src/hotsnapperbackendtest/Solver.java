@@ -12,6 +12,7 @@ import java.util.List;
 /**
  *
  * @author Helen
+ * http://stackoverflow.com/questions/15293232/how-to-design-an-algorithm-to-calculate-countdown-style-maths-number-puzzle
  */
 public class Solver {
 
@@ -26,7 +27,7 @@ public class Solver {
             List<Integer> runList = new ArrayList<>(list);
             runList.remove(integer);
             String ans = Answer.generate(nos).split(" : ")[0];
-            System.out.println(ans);
+            System.out.println(532);
             Result result = getOperations(runList, integer, 532);
             if (result.success) {
                 System.out.println(integer + result.output);
@@ -37,7 +38,6 @@ public class Solver {
 
     public static class Result
     {
-
         public String output;
         public boolean success;
     }
@@ -56,22 +56,22 @@ public class Solver {
             if (newList.isEmpty()) {
                 if (midNumber - number == target) {
                     midResult.success = true;
-                    midResult.output = "-" + number;
+                    midResult.output = " - " + number + " =@";
                     return midResult;
                 }
                 if (midNumber + number == target) {
                     midResult.success = true;
-                    midResult.output = "+" + number;
+                    midResult.output = " + " + number + " =@";
                     return midResult;
                 }
                 if (midNumber * number == target) {
                     midResult.success = true;
-                    midResult.output = "*" + number;
+                    midResult.output = " * " + number + " =@";
                     return midResult;
                 }
                 if (midNumber / number == target) {
                     midResult.success = true;
-                    midResult.output = "/" + number;
+                    midResult.output = " / " + number + " =@";
                     return midResult;
                 }
                 midResult.success = false;
@@ -80,22 +80,23 @@ public class Solver {
             } else {
                 midResult = getOperations(newList, midNumber - number, target);
                 if (midResult.success) {
-                    midResult.output = "-" + number + midResult.output;
+                    midResult.output = " - " + number  + " =@" + midResult.output;
+                    System.out.println();
                     return midResult;
                 }
                 midResult = getOperations(newList, midNumber + number, target);
                 if (midResult.success) {
-                    midResult.output = "+" + number + midResult.output;
+                    midResult.output = " + " + number  + " =@" + midResult.output;
                     return midResult;
                 }
                 midResult = getOperations(newList, midNumber * number, target);
                 if (midResult.success) {
-                    midResult.output = "*" + number + midResult.output;
+                    midResult.output = " * " + number + " =@" + midResult.output;
                     return midResult;
                 }
                 midResult = getOperations(newList, midNumber / number, target);
                 if (midResult.success) {
-                    midResult.output = "/" + number + midResult.output;
+                    midResult.output = " / " + number + " =@" + midResult.output;
                     return midResult;
                 }
             }
