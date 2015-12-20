@@ -35,6 +35,34 @@ public class Solver {
             }
         }
     }
+    
+    public static String inputValues(int[] numbers, int target)
+    {
+        List<Integer> list = Arrays.asList();
+        
+        //e.g. numbers: 3, 4, 8, 7, 12
+        for (int i = 0; i < numbers.length; i++)
+        {
+            list.add(i);
+        }
+        
+        Result result = null;
+        
+        //The target number is eg 532
+        for (Integer integer : list) {
+            List<Integer> runList = new ArrayList<>(list);
+            runList.remove(integer);
+            String ans = Answer.generate(numbers).split(" : ")[0];
+            System.out.println(ans);
+            result = getOperations(runList, integer, target);
+            if (result.success) {
+                System.out.println(integer + result.output);
+                return result.output;
+            }
+        }
+        
+        return result.output;
+    }
 
     public static class Result
     {

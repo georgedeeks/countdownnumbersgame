@@ -5,7 +5,6 @@
  */
 package hotsnapperbackendtest;
 
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -48,7 +47,8 @@ public class PlayGame {
             targetNumber = CsvInfoSingleton.getTargetNumber();
             numbers = CsvInfoSingleton.getNumbers();
             
-            solutionString = CalculateRelationship.getAnswerString(targetNumber, numbers);
+            solutionString = Solver.inputValues(numbers, targetNumber);
+            //solutionString = CalculateRelationship.getAnswerString(targetNumber, numbers);
             
             // set available to false as we've just used it            
             CsvInfoSingleton.getInstance().setAvailable(false);
@@ -62,7 +62,14 @@ public class PlayGame {
             numbers = Question.generate();
             
             String solutionAndTargetString = Answer.generate(numbers);
-                
+            
+            String[] parts = solutionAndTargetString.split("\\s:\\s");
+            
+            targetNumber = Integer.parseInt(parts[0]);
+            
+            solutionString = parts[1];
+                    
+            
             // targetNumber = AnswerGenerator.generateTarget(numbers);
                       
         }
@@ -110,7 +117,9 @@ public class PlayGame {
                             if (interval == 1)
                             {
                                 timer.cancel(); 
-                                System.out.println("\nFinished!");
+                                System.out.println("\nFinished! "
+                                        + "Solution was:\n" 
+                                        + solutionString);
                             }
                             else
                             {
