@@ -55,8 +55,8 @@ public class Csv {
 		}
 	}
 
-        System.out.print("targetint = " + targetInt + " ");
-	System.out.print("Done");
+        //System.out.print("targetint = " + targetInt + " ");
+	//System.out.print("Done");
         
         return targetInt;
     }
@@ -90,7 +90,7 @@ public class Csv {
                     {
                         numbers[i] = Integer.parseInt(numbersAsStrings[i]);
                         
-                        System.out.print(numbers[i] + " ");
+                        //System.out.print(numbers[i] + " ");
                         
                     }
                     

@@ -63,7 +63,7 @@ public class PlayGame {
             
             String solutionAndTargetString = Answer.generate(numbers);
             
-            String[] parts = solutionAndTargetString.split("\\s:\\s");
+            String[] parts = solutionAndTargetString.split("\\s:\\s\n");
             
             targetNumber = Integer.parseInt(parts[0]);
             
@@ -101,9 +101,9 @@ public class PlayGame {
             
             String numbersAsString = Csv.numbersToString(numbers);
         
-            System.out.println("Your numbers are: "
-                        + "\n " + numbersAsString 
-                        + "\n And your target is: " + targetNumber);
+            System.out.println("Your numbers are:"
+                        + " " + numbersAsString 
+                        + "\nAnd your target is: " + targetNumber);
 
             int delay = 0;
             int period = 1000;
@@ -126,7 +126,8 @@ public class PlayGame {
                                 timer.cancel(); 
                                 System.out.println("\nFinished! "
                                         + "Solution was:\n" 
-                                        + solutionString);
+                                        + solutionString 
+                                        + "Play again (Y/N)?");
                             }
                             else
                             {

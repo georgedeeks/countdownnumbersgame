@@ -16,6 +16,8 @@ import java.util.logging.Logger;
  */
 public class HotSnapperBackEndTest {
 
+    public static boolean firstTime= true;
+    
     /**
      * @param args the command line arguments
      */
@@ -33,28 +35,67 @@ public class HotSnapperBackEndTest {
         
         Csv.readAndStoreCsv();
         
-        boolean playAgain = true;
+        boolean again = true;
         
-        while (playAgain) 
+        while(again)
         {
-            System.out.println("Play again (Y/N)?");
-            String str = scanner.next();
-            if (str.equalsIgnoreCase("N"))
-            {
-                playAgain = false;
-                break;
-            }
-            else
-            {
-                System.out.println("Hurray! You want to play again!\n");
-                PlayGame.nextGame();
-                playAgain = true;                
-            }
+            // method here
+            again = askToPlay(scanner);
+        }
+        
+        // finally...
+        System.out.println("I'm free from all this! Application closing.");
+        
+    }
+    
+    public static boolean askToPlay(Scanner scanner)
+    {
+        
+        String askToPlay;
+        
+        if (firstTime)
+        {
+            firstTime = false;
+            askToPlay = "Play game (Y/N)?";
+            
+            System.out.println(askToPlay);
         }
         
         
-        System.out.println("I'm free! Application closing.");
         
+        
+        String str = scanner.next();
+        
+        if (str.equalsIgnoreCase("Y"))
+        {
+            
+            System.out.println("Hurray! You want to play! Get ready...");
+            
+            //PlayGame.nextGame();
+            // interim stub method call
+            //boolean whoCaresAboutThisBoolean = interimStubMethod();
+            
+            PlayGame.nextGame();
+            
+            return true;
+            
+            // return interimStubMethod;
+            
+        }
+        else
+        {
+            System.out.println("You don't want to play again!");
+            
+            return false;                
+        }
+        
+    }
+    
+    public static boolean interimStubMethod()
+    {
+        System.out.println("Weewees and petunias!");
+        
+        return true;
     }
     
 }

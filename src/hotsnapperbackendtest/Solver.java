@@ -56,7 +56,7 @@ public class Solver {
             List<Integer> runList = new ArrayList<>(list);
             runList.remove(integer);
             String ans = Answer.generate(numbers).split(" : ")[0];
-            System.out.println(ans);
+         //   System.out.println(ans);
             result = getOperations(runList, integer, target);
             //Modified code to make formatting of result more consistent
             if (result.success) {
@@ -153,7 +153,7 @@ public class Solver {
                 midResult = getOperations(newList, midNumber - number, target);
                 if (midResult.success) {
                     midResult.output = " - " + number  + " =@" + midResult.output;
-                    System.out.println();
+            //        System.out.println();
                     return midResult;
                 }
                 midResult = getOperations(newList, midNumber + number, target);
