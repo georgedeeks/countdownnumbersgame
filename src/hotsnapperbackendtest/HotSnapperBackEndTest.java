@@ -18,10 +18,18 @@ public class HotSnapperBackEndTest {
      */
     public static void main(String[] args) {
         
-        Csv.readAndStoreCsv();
+        
         
         Scanner scanner = new Scanner(System.in); 
         
+        System.out.println("Type in any key (and hit return) to play!");
+        
+        String stri = scanner.next();
+        
+        if (stri.isEmpty() == false)
+        {
+        Csv.readAndStoreCsv();
+            
         PlayGame.nextGame();
         
         while (true) 
@@ -37,6 +45,8 @@ public class HotSnapperBackEndTest {
                 System.out.println("Hurray! You want to play again!\n");
                 PlayGame.nextGame();
             }
+        }
+        
         }
         
         System.out.println("I'm free! Application closing.");

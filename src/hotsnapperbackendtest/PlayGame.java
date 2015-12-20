@@ -47,7 +47,7 @@ public class PlayGame {
             targetNumber = CsvInfoSingleton.getTargetNumber();
             numbers = CsvInfoSingleton.getNumbers();
             
-            solutionString = "PLACEHOLDER";
+            solutionString = Solver.inputValues(numbers, targetNumber);
             //solutionString = CalculateRelationship.getAnswerString(targetNumber, numbers);
             
             // set available to false as we've just used it            

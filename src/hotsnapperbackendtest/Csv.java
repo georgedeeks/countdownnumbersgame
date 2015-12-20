@@ -68,7 +68,7 @@ public class Csv {
         
         // parameter strategy is either 'numbers' or 'target'
         
-        String csvFile = "numbers/" + "numbe8rs" + ".csv";
+        String csvFile = "numbers/" + "numbers" + ".csv";
       //  System.out.println("csvfile = " + csvFile);
         
         
@@ -94,7 +94,7 @@ public class Csv {
                     {
                         numbers[i] = Integer.parseInt(numbersAsStrings[i]);
                         
-                        System.out.print(numbers[i] + " ");
+                        //System.out.print(numbers[i] + " ");
                         
                     }
                     
@@ -119,7 +119,7 @@ public class Csv {
 		}
 	}
 
-	System.out.println("Numbers = " + numbers);
+	System.out.println("Numbers = " + numbers.toString());
         
         return numbers;
     }
