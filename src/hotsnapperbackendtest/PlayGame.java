@@ -27,16 +27,16 @@ public class PlayGame {
     
     public static void nextGame(){
                 
-        // step 1 - checkCsvJsonSingleton has Qs and/or As
+        // step 1 - checkCsvJsonSingleton has numbers[] && targetNumber
         // step 2 - make decision of whether to:
             // option 2A - generate nothing; csv contains all info
-                // SEND TO figure-it-out class
-            // option 2B - generate questions and an answer
+                // SEND TO generate-a-solution method
+            // option 2B - CSV has no available info; generate questions and an answer
                 // SEND TO generate questions
                 // SEND TO generate answers (questions)
         
-        //TOSORT//TODO
-        // try.catch here?
+        // NB - once active CSV info has been used in a game, becomes 
+        // unavailable/'inactive'
                 
         if (CsvInfoSingleton.isAvailable() == true)
         {
@@ -48,9 +48,9 @@ public class PlayGame {
             numbers = CsvInfoSingleton.getNumbers();
             
             solutionString = Solver.inputValues(numbers, targetNumber);
-            //solutionString = CalculateRelationship.getAnswerString(targetNumber, numbers);
             
-            // set available to false as we've just used it            
+            // set available to false as we've just used it so 
+            //do not use for another game           
             CsvInfoSingleton.getInstance().setAvailable(false);
             
         }
@@ -68,9 +68,6 @@ public class PlayGame {
             targetNumber = Integer.parseInt(parts[0]);
             
             solutionString = parts[1];
-                    
-            
-            // targetNumber = AnswerGenerator.generateTarget(numbers);
                       
         }
         // **NB possible future development - 
@@ -83,17 +80,18 @@ public class PlayGame {
             // (i) numbers, 
             // (ii) target number  
             // (iii) solution
-        // local declared variables
+        // ...all stored as local declared variables
         
         // step 3 - print out #s, target# & solution in sout
         // (check for try/catch in method itself)
         
         printGame();
         
-        // end of game
+        // end of game; return to main method
         
     }
     
+    // method that handles printing out of calculated/discovered variables
     public static void printGame() {
     
         try
@@ -109,11 +107,10 @@ public class PlayGame {
             int period = 1000;
             timer = new Timer();
             
-        ////////////////////////////////////////////////////////////
-        /// SHOULD BE 31
-        /// CHANGED TO 6 FOR TESTING
+            // originally, interval int value was 31
+            // 31 reflects 30 second countdown timer
+            // changed to just 5 seconds for simplicity
             interval = 6;
-        ////////////////////////////////////////////////////////////
             
             timer.scheduleAtFixedRate
                 (new TimerTask() 
@@ -147,7 +144,9 @@ public class PlayGame {
         
 }
 
-    // also ensures that  anew line after every 10s
+// this method is used as part of printgame method
+// it also ensures that multiples of 10 on the timer
+// are printed on a new line (under 30s, the original max timer length)
 private static final int setInterval() {
     
     if ((interval - 1) % 10 == 0 && interval < 30)

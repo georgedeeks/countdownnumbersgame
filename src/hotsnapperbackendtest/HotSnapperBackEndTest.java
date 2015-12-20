@@ -16,9 +16,12 @@ import java.util.logging.Logger;
  */
 public class HotSnapperBackEndTest {
 
-    public static boolean firstTime= true;
+    public static boolean firstTime = true;
     
     /**
+     * 
+     * Main application logic for program
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -37,6 +40,7 @@ public class HotSnapperBackEndTest {
         
         boolean again = true;
         
+        // whilst user continues to press yes (to another game), loop continues
         while(again)
         {
             // method here
@@ -44,12 +48,14 @@ public class HotSnapperBackEndTest {
         }
         
         // finally...
-        System.out.println("I'm free from all this! Application closing.");
+        System.out.println("I'm free! Application closing.");
         
     }
     
     public static boolean askToPlay(Scanner scanner)
     {
+        
+        // Prints out initial message if first time
         
         String askToPlay;
         
@@ -61,9 +67,6 @@ public class HotSnapperBackEndTest {
             System.out.println(askToPlay);
         }
         
-        
-        
-        
         String str = scanner.next();
         
         if (str.equalsIgnoreCase("Y"))
@@ -71,15 +74,9 @@ public class HotSnapperBackEndTest {
             
             System.out.println("Hurray! You want to play! Get ready...");
             
-            //PlayGame.nextGame();
-            // interim stub method call
-            //boolean whoCaresAboutThisBoolean = interimStubMethod();
-            
             PlayGame.nextGame();
             
             return true;
-            
-            // return interimStubMethod;
             
         }
         else
@@ -89,13 +86,6 @@ public class HotSnapperBackEndTest {
             return false;                
         }
         
-    }
-    
-    public static boolean interimStubMethod()
-    {
-        System.out.println("Weewees and petunias!");
-        
-        return true;
     }
     
 }

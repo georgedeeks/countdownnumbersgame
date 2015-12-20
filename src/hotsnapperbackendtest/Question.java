@@ -10,11 +10,13 @@ import java.util.Random;
 
 /**
  *
- * @author Helen
+ * @author George
  */
 public class Question {
     private static Random random = new Random();
     
+    
+   // generate 5 random #s, from 1-12
    public static int[] generate()
    {
       //Initialize variables

@@ -20,11 +20,8 @@ public class Csv {
     public static int readTargetCsv()
     {
         
-        // parameter strategy is either 'numbers' or 'target'
         
         String csvFile = "numbers/" + "target" + ".csv";
-      //  System.out.println("csvfile = " + csvFile);
-        
         
 	BufferedReader br = null;
 	
@@ -38,38 +35,36 @@ public class Csv {
             String targetString = br.readLine();
             
             targetInt = Integer.parseInt(targetString);
-               
-
+        
 	} catch (FileNotFoundException e) {
+               e.printStackTrace();
+        } catch (IOException e) {
 		e.printStackTrace();
-                
-	} catch (IOException e) {
-		e.printStackTrace();
-	} finally {
-		if (br != null) {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+	} finally 
+        {
+            if (br != null) 
+            {
+                try 
+                {
+                    br.close();
+		} 
+                catch (IOException e) 
+                {
+                    e.printStackTrace();
 		}
+            }
 	}
 
-        //System.out.print("targetint = " + targetInt + " ");
-	//System.out.print("Done");
-        
         return targetInt;
+    
     }
     
     // returns null if error
     public static int[] readNumbersCsv()
     {
         
-        // parameter strategy is either 'numbers' or 'target'
-        
         String csvFile = "numbers/" + "numbers" + ".csv";
-      //  System.out.println("csvfile = " + csvFile);
-
+    
 	BufferedReader br = null;
 	String line = "";
 
@@ -83,18 +78,14 @@ public class Csv {
             while ((line = br.readLine()) != null) 
             {
 
-                    // comma separator
-                    String[] numbersAsStrings = line.split(",");
+                // comma separator
+                String[] numbersAsStrings = line.split(",");
 
-                    for (int i = 0; i<5; i++)
-                    {
-                        numbers[i] = Integer.parseInt(numbersAsStrings[i]);
-                        
-                        //System.out.print(numbers[i] + " ");
-                        
-                    }
-                    
-                   // System.out.println("numbers length 1 = " + numbers.length);
+                for (int i = 0; i<5; i++)
+                {
+                    numbers[i] = Integer.parseInt(numbersAsStrings[i]);
+
+                }
                     
             }
 
@@ -104,20 +95,23 @@ public class Csv {
 	} catch (IOException e) {
 		e.printStackTrace();
                 numbers = null;
-                
 	} finally {
-		if (br != null) {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+
+            if (br != null) 
+            {
+		try {
+                    br.close();
+		} catch (IOException e) {
+                    e.printStackTrace();
 		}
+            }
 	}
         
         return numbers;
+        
     }
     
+    // converts int[] into a suitable toString method
     public static String numbersToString(int[] numbers)
     {
         String numbersResult = ""; //i.e. if unchanged
@@ -126,13 +120,11 @@ public class Csv {
         {
             numbersResult += Integer.toString(numbers[i]) + " ";
         }    
-        //System.out.println("numbers length = " + numbers.length);
-        
-	//System.out.println("Numbers = " + numbersResult);
         
         return numbersResult;
     }
     
+    // test harness
     public static void main(String[] args) {
         
         readNumbersCsv();
@@ -141,6 +133,13 @@ public class Csv {
         
     }
     
+    /**
+    * 
+    * Reads CSV files in local directory - if values successfully read,
+    * stores these in another static singleton class
+    * 
+    * @author ACER-LAPTOP
+    */
     public static void readAndStoreCsv()
     {
         // read
@@ -163,21 +162,15 @@ public class Csv {
             
             CsvInfoSingleton.getInstance().setAvailable(true);
             
-            
-            // set available boolean to true
-            
-            //TODO
-            
         }
         else
         {
             // set available boolean to false as there was an error
             
            CsvInfoSingleton.getInstance().setAvailable(false);
+        
         }
-        
-        //hi
-        
+                
     }
 
     

@@ -6,12 +6,12 @@
 package hotsnapperbackendtest;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  *
- * @author Helen
+ * @author George (plus online help)
+ * This class was implemented with help from:
  * http://stackoverflow.com/questions/15293232/how-to-design-an-algorithm-to-calculate-countdown-style-maths-number-puzzle
  */
 public class Solver {
@@ -24,44 +24,28 @@ public class Solver {
         String oTemp;
         int step = 0;
         
-     //   list = Arrays.asList();
-
-        
         //e.g. numbers: 3, 4, 8, 7, 12
         for (int i = 0; i < numbers.length; i++)
         {
             list.add(numbers[i]);
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         Result result = null;
         
-        //The target number is eg 532
-        for (Integer integer : list) {
+        //e.g. The target number is eg 532
+        for (Integer integer : list) 
+        {
             List<Integer> runList = new ArrayList<>(list);
             runList.remove(integer);
             String ans = Answer.generate(numbers).split(" : ")[0];
-         //   System.out.println(ans);
             result = getOperations(runList, integer, target);
+            
             //Modified code to make formatting of result more consistent
-            if (result.success) {
+            if (result.success) 
+            {
                 //'split' out each individual step in the answer
                 String[] parts = result.output.split("@");
+                
                 //Create two lists - one for each number used in the answer, and
                 //one for each operation used!
                 for(int i = 0; i < parts.length; i++)
@@ -71,10 +55,13 @@ public class Solver {
                     noList.add(temp);
                     operators.add(oTemp);
                 }
+                
                 temp = integer;
                 result.output = "";
+                
                 //Go through each step (represented by step) and create a String
                 //representation of the sum (e.g. 12 * 7 = 14, 8 - 3 = 5, etc.)
+                
                 while(step < noList.size())
                 {                
                     switch(operators.get(step))
@@ -114,7 +101,8 @@ public class Solver {
         public boolean success;
     }
 
-    public static Result getOperations(List<Integer> numbers, int midNumber, int target)
+    public static Result getOperations(List<Integer> numbers, 
+            int midNumber, int target)
     {
         Result midResult = new Result();
         if (midNumber == target) {

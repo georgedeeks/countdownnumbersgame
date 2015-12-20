@@ -7,6 +7,8 @@ package hotsnapperbackendtest;
 
 /**
  *
+ * Singleton static class
+ * 
  * @author ACER-LAPTOP
  */
 public class CsvInfoSingleton {
@@ -16,18 +18,16 @@ public class CsvInfoSingleton {
     
     private static boolean available = false;
 
+    private static CsvInfoSingleton instance = new CsvInfoSingleton();
 
-     //create an object of SingleObject
-   private static CsvInfoSingleton instance = new CsvInfoSingleton();
+    private CsvInfoSingleton(){}
 
-   //make the constructor private so that this class cannot be
-   //instantiated
-   private CsvInfoSingleton(){}
-
-   //Get the only object available
-   public static CsvInfoSingleton getInstance(){
-      return instance;
-   }
+    // Various getters and setters:
+    
+    //Get the only object available
+    public static CsvInfoSingleton getInstance(){
+       return instance;
+    }
 
     public static int[] getNumbers() {
         return numbers;

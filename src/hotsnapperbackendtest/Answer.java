@@ -13,10 +13,16 @@ import java.util.Random;
  * @author George
  */
 public class Answer {
-    private static Random random = new Random();
     
-   private Answer(){}
-   
+   private static Random random = new Random();
+    
+   /**
+    * Takes 5 numbers and generates a solution, 
+    * including the target number, all in 1 String
+    * 
+     * @param nos
+     * @return String
+    */
    public static String generate(int[] nos)
    {
        //Initialize variables needed
@@ -44,10 +50,14 @@ public class Answer {
       while(!numbers.isEmpty())
       {
          selected = (random.nextInt(numbers.size()) + 1) - 1;
+         
          n = numbers.get(selected);
-         //Randomly pick which operation you want to use
+         
+         // Now randomly pick which operation you want to use
          //(Addition and multiplication have 2x greater chance)
+         
          operator = random.nextInt(6) + 1;
+         
          switch(operator)
          {
             //Addition
@@ -91,7 +101,7 @@ public class Answer {
                        break;
                     }
                     break;
-                
+         
             //Division
             //note: Need to check value is divisible before commiting it!
             case 6: str = answer + " / " + n;
@@ -111,6 +121,7 @@ public class Answer {
       return answer + " : " + "\n" + output;
    }
    
+   // test this class works in main harness
    public static void main(String[] args)
    {
       int[] nos = new int[5];
@@ -125,8 +136,11 @@ public class Answer {
       {
           System.out.println(nos[i]);
       }
-       System.out.println("");
+       
+      System.out.println("");
+      
       System.out.println(Answer.generate(Question.generate()));
+      
    }
     
     
