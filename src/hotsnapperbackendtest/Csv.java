@@ -118,8 +118,15 @@ public class Csv {
 			}
 		}
 	}
+        
+        String numbersResult = "error"; //i.e. if unchanged
+        
+        for (int i = 0; i < numbers.length; i++)
+        {
+            numbersResult = numbers[i] + " ";
+        }
 
-	System.out.println("Numbers = " + numbers.toString());
+	System.out.println("Numbers = " + numbersResult);
         
         return numbers;
     }
